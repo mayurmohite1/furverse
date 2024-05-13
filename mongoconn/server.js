@@ -13,12 +13,17 @@ mongoose
     console.error("Error connecting to MongoDB", err);
   });
 app.use(express.json());
+const userRouter = require("./routes/user");
+app.use("/user", userRouter);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-require("./schema");
-const User = mongoose.model("hi");
+
+
+/*
+require("./models/userSchema");
+const User = mongoose.model("User");
 const demo = new User({
   id: "mayur",
   Username: "mayur",
@@ -49,3 +54,4 @@ demo
   .catch((error) => {
     console.error("Error saving user document:", error);
   });
+*/
