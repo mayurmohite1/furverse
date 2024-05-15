@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userSchema");
 
-router.get("/", async (req, res) => {
+router.get("/getallusers", async (req, res) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/getusersbyid/:id", async (req, res) => {
   try {
     const users = await User.findById(req.params.id);
     res.status(200).json(users);
@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/create", async (req, res) => {
   try {
     const {
       id,
@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     const deletedUser = await User.findByIdAndDelete(userId);
@@ -74,7 +74,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.patch("/:id", async (req, res) => {
+router.patch("/update/:id", async (req, res) => {
   try {
     const userId = req.params.id;
     const update = req.body;
