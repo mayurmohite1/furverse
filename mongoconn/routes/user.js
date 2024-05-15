@@ -73,4 +73,24 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
+
+router.patch("/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const update = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(userId, update, {
+      new: true,
+    });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(updatedUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
 module.exports = router;
