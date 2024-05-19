@@ -14,12 +14,10 @@ mongoose
   });
 app.use(express.json());
 const userRouter = require("./routes/user");
-app.use("/user", userRouter);
+app.use("/user", userRouter); //userRouter routes it to the user.js file when included in the url
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
 
 /*
 require("./models/userSchema");

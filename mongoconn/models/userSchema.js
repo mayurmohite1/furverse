@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Schema for the furverse/Users database
 const inventorySchema = new mongoose.Schema({
   Items: {
     shard: { type: Number, default: 0 },
@@ -7,8 +8,7 @@ const inventorySchema = new mongoose.Schema({
     orb: { type: Number, default: 0 },
     gem: { type: Number, default: 0 },
   },
-}
-);
+});
 
 const userSchema = new mongoose.Schema(
   {
