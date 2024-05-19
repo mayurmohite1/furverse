@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/userSchema");
 
+//GET all the users from the db
 router.get("/getallusers", async (req, res) => {
   try {
     const users = await User.find();
@@ -11,6 +12,7 @@ router.get("/getallusers", async (req, res) => {
   }
 });
 
+//Get user specified in the url with id
 router.get("/getusersbyid/:id", async (req, res) => {
   try {
     const users = await User.findById(req.params.id);
@@ -20,6 +22,7 @@ router.get("/getusersbyid/:id", async (req, res) => {
   }
 });
 
+//Create user according to the schema in the db
 router.post("/create", async (req, res) => {
   try {
     const {
@@ -58,6 +61,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
+//Delete user based on the id
 router.delete("/delete/:id", async (req, res) => {
   try {
     const userId = req.params.id;
@@ -74,6 +78,7 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
+//Update the user schema based on the id
 router.patch("/update/:id", async (req, res) => {
   try {
     const userId = req.params.id;
